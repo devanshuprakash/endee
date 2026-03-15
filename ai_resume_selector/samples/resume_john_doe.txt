@@ -1,0 +1,5 @@
+John Doe
+Software Engineer
+Experience: 5 years of Python development, expertise in Flask and Vector Databases.
+Skills: Python, SQL, REST APIs, Docker, HNSW indexing.
+Education: B.S. in Computer Science.

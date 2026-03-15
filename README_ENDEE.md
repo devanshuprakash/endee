@@ -35,7 +35,6 @@ NDD_AUTH_TOKEN=your_token_if_any
 ### 4. Run Endee Server
 If you haven't started Endee yet:
 ```bash
-./install.sh --release --neon
 ./run.sh
 ```
 (Or use Docker: `docker compose up -d`)

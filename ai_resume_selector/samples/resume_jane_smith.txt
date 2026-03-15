@@ -1,0 +1,5 @@
+Jane Smith
+Data Scientist
+Experience: 3 years in Machine Learning, focus on NLP and LLMs.
+Skills: Python, PyTorch, Transformers, OpenAI API, Data Visualization.
+Education: M.S. in Statistics.

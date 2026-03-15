@@ -1,0 +1,7 @@
+endee
+openai
+gradio
+pdfplumber
+python-docx
+python-dotenv
+sentence-transformers
