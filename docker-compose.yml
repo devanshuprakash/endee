@@ -24,6 +24,24 @@ services:
     volumes:
       - endee-data:/data
     restart: unless-stopped
+    networks:
+      - endee-net
+
+  demo-app:
+    build:
+      context: ./demo_app
+      dockerfile: Dockerfile
+    container_name: demo-app
+    ports:
+      - "5000:5000"
+    environment:
+      - ENDEE_HOST=http://endee-oss:8080
+      - NDD_AUTH_TOKEN=${NDD_AUTH_TOKEN:-}
+    depends_on:
+      - endee-oss
+    networks:
+      - endee-net
+
 
 volumes:
   # Modify the 'device' path below to change the host directory used for data persistence
@@ -33,3 +51,7 @@ volumes:
     # type: ext4
     # o: bind
     # device: ${PWD}/dockerdata
+
+networks:
+  endee-net:
+    driver: bridge

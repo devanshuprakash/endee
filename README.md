@@ -44,6 +44,32 @@ If you want the fastest path to evaluate Endee locally, start with the [Getting 
 
 The full installation, build, Docker, runtime, and authentication instructions are in [docs/getting-started.md](./docs/getting-started.md).
 
+### 🚀 Demo App Setup (System Design & Endee Usage)
+This repository includes a full-stack **RAG and Semantic Search** demo application built in Python showing how to ingest data and serve queries via a web UI using Endee.
+
+#### System Architecture
+1. **Data Ingestion (`demo_app/ingest.py`)**: Uses `sentence-transformers` (`all-MiniLM-L6-v2`) to convert documents into 384-dimensional dense vectors and upserts them into Endee.
+2. **Vector DB (Endee)**: Stores the indexed vectors and rapidly retrieves the most relevant `topK` matches using a cosine similarity index.
+3. **Application Layer (`demo_app/app.py`)**: A Flask web server that provides an HTML interface, vectorizes user search queries, and polls Endee via its HTTP API wrapper.
+
+#### How to Run Locally with Docker (Recommended)
+You can start both the Endee server and the Python Demo App instantly using Docker Compose:
+
+```bash
+# Provide a secret token if you want to secure the DB, or leave blank
+export NDD_AUTH_TOKEN="my-secret-token"
+
+# Spin up both the Endee DB and the Flask app
+docker compose up -d --build
+```
+Once the containers are running:
+1. Initialize the index and ingest dummy data by running the ingestion script inside the app container:
+   ```bash
+   docker compose exec demo-app python ingest.py
+   ```
+2. Open your browser and navigate to `http://localhost:5000` to interact with the search UI!
+
+
 Fastest local path:
 
 ```bash
